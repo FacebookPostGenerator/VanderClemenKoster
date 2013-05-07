@@ -13,18 +13,9 @@ Created on May 3, 2013
 '''
 
 import nltk
-<<<<<<< HEAD
 import string
-=======
 #nltk.download()   #run first time
-import string
-import re
-import FacebookScraper
-import SentenceGenerator
 
-
-
->>>>>>> ce3d930b983cc00e5a40255b746bb910fe29a856
 
 #----------------------------------------------------------------------------------------------
 
@@ -126,23 +117,3 @@ def classify_sentence(status):
 
 #----------------------------------------------------------------------------------------------
 
-<<<<<<< HEAD
-test = {'100001066420386_541929349185941': ['Happiness is...\n20. Running through sprinklers.', 1], 
-        '1334531204_10200604077258466': ["you're going to have a lot of notifications... sorry. but not really. I'm prepping for our story time. ", 1], 
-        '1096793804_10200805407872979': ['Live in Love: Is it really that simple?', 1], 
-        '512318607_10151575131243608': ['\\uc790\\uac81\\ud0c0\\uc784\r\n\r\n+ \r\n\r\n\\ubed0\\ub09c\\uba5c\\ub85c\\ub514_\r\nhttp:\\/\\/www.youtube.com\\/watch?v=Jkozsve2oKU', 1], 
-        '512318607_10151575137338608': ['\\uc544 \\uc774\\ub7f0\\uac70\\uc2dc \\uc870\\uc73c\\ub2e4 . ', 1], 
-        '545130542_10152785859675543': ['Late nights and earlier mornings while paper writing has imparted me the appreciation of bitter and dark coffee, peaceful and silent mornings save the clacking of my keyboard, and the quiet, gradual brilliance of a sunrise.', 5], 
-        '662326254_10201103188124553': ['Happy birthday, NJB!!!', 1], 
-        '548501150_10201103191364634': ['Happy Birthday!:D', 1]}
-
-=======
-test = FacebookScraper.getPostDict()
-#buglines
->>>>>>> ce3d930b983cc00e5a40255b746bb910fe29a856
-print "Dictionary of Words and Likes:"
-print assign_likes_to_words(test)
-print "\nClassified Words: "
-print classify_words(test)
-
-# end of file
