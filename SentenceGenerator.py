@@ -76,28 +76,29 @@ def createSentence(grammarStructure, posWordDict, likesWordDict):
 #--------------------------------------------------------------
 
 
-stephenDict = {'100001066420386_541929349185941': ['Happiness is...\n20. Running through sprinklers.', 1], '1334531204_10200604077258466': ["you're going to have a lot of notifications... sorry. but not really. I'm prepping for our story time. ", 1], '1096793804_10200805407872979': ['Live in Love: Is it really that simple?', 1], '512318607_10151575137338608': ['\\uc544 \\uc774\\ub7f0\\uac70\\uc2dc \\uc870\\uc73c\\ub2e4 . ', 1], '545130542_10152785859675543': ['Late nights and earlier mornings while paper writing has imparted me the appreciation of bitter and dark coffee, peaceful and silent mornings save the clacking of my keyboard, and the quiet, gradual brilliance of a sunrise.', 5], '662326254_10201103188124553': ['Happy birthday, NJB!!!', 1], '548501150_10201103191364634': ['Happy Birthday!:D', 1]}
+#This is the main method for our program (it runs Matt's code as well)
+def run(stephenDict):
+    
+    likesWordDict = classify.assign_likes_to_words(stephenDict)
 
-likesWordDict = classify.assign_likes_to_words(stephenDict)
+    # theStatuses will be a list of statuses that stephen gives me
+    theStatuses = []
+    # This will go through every sentence and add it to theStatuses
+    for key, value in stephenDict.iteritems():
+        theStatuses.append(value[0])    
+    print theStatuses
 
-# theStatuses will be a list of statuses that stephen gives me
-theStatuses = []
-# This will go through every sentence and add it to theStatuses
-for key, value in stephenDict.iteritems():
-    theStatuses.append(value[0])    
-print theStatuses
-
-print "The chosen structure is:"
-theStructure = chooseStructure(theStatuses)
-print theStructure
-print "The classified words are:"
-classyWords = classify.classify_words(stephenDict)
-print classyWords
-print "The dictionary of likes is:"
-likesDictionary = classify.assign_likes_to_words(stephenDict)
-print likesDictionary
+    print "The chosen structure is:"
+    theStructure = chooseStructure(theStatuses)
+    print theStructure
+    print "The classified words are:"
+    classyWords = classify.classify_words(stephenDict)
+    print classyWords
+    print "The dictionary of likes is:"
+    likesDictionary = classify.assign_likes_to_words(stephenDict)
+    print likesDictionary
 
 
-randomlyGeneratedStatus = createSentence(theStructure, classyWords, likesDictionary)
+    randomlyGeneratedStatus = createSentence(theStructure, classyWords, likesDictionary)
 
-print "done"
+    print "done"

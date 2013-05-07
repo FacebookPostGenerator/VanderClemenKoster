@@ -13,6 +13,7 @@ Created on May 3, 2013
 '''
 
 import nltk
+nltk.download()
 import string
 import re
 import FacebookScraper
@@ -40,7 +41,7 @@ def assign_likes_to_words(status_dict):
         status = status_dict[statusID][0]
         words = status.split(' ')
         for word in words:
-            word = remove_punctuation(remove_emoticons(word))
+            #word = remove_punctuation(remove_emoticons(word))
             
             # Add the words to the dictionary, so long as they are not just punctuation
             if word == "":
