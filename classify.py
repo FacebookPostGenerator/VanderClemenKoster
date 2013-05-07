@@ -1,19 +1,11 @@
 '''
-vals_and_probs is a library providing three functions:
+vals_and_probs is a library providing two primary functions:
 
 1) assign_likes_to_words takes in a dictionary of status IDs keyed to 
 a tuple of (status, likes) and separates those sentences into a dictionary keying each 
 individual word to its total number of "likes."
 
-2) normalize_likes takes in a dictionary of words keyed to their total numbers of likes
-and assigns relative probabilities to each word. 
-
-For example, the dictionary:
-    { "Hi": 2, "Hello": 1, "Peace": 1 }
-would be rescaled to:
-    { "Hi": 0.5, "Hello": 0.25, "Peace": 0.25 }
-    
-3) classify_words takes in a dictionary of statuses 
+2) classify_words takes in a dictionary of statuses 
 
 Created on May 3, 2013
 
@@ -33,7 +25,7 @@ def assign_likes_to_words(status_dict):
     it was originally a part.
     
     For example, the status:
-        { 1234 L ("Hello, Mitch", 5) }
+        { 1234 : ("Hello, Mitch", 5) }
     Would be parsed into:
         { "Hello": 5, "Mitch": 5 }
     
@@ -49,7 +41,7 @@ def assign_likes_to_words(status_dict):
         for word in words:
             word = remove_punctuation(remove_emoticons(word))
             
-            # Add the words to the dictionary, if they are not just punctuation
+            # Add the words to the dictionary, so long as they are not just punctuation
             if word == "":
                 continue
             elif words_dict.has_key(word):
@@ -71,7 +63,7 @@ def remove_punctuation(status):
 
 def remove_emoticons(status):
     '''
-    Removes emoticons from facebook statuses
+    Removes emoticons from a string
     
     @param status: The word from which to remove punctuation
     @return: The status with common emoticons parsed out.
@@ -87,25 +79,6 @@ def remove_emoticons(status):
     fixed_status = remove_object.sub(lambda m: remove_dict[m.group(0)], status)
     
     return fixed_status
-
-#----------------------------------------------------------------------------------------------
-
-def normalize_likes(words_dict):
-    '''
-    Normalizes a dictionary of words keyed to their number of "likes."
-    
-    @param words_dict: A dictionary of words keyed to a number of likes.
-    @return: A dictionary of {word in status : normalized number of likes}
-    '''
-    likes_sum = 0
-    normalized_words_dict = {}
-    for key in words_dict:
-        likes_sum += words_dict[key]
-        
-    for key in words_dict:
-        normalized_words_dict[key] = float(words_dict[key]) / float(likes_sum)
-        
-    return normalized_words_dict
 
 #----------------------------------------------------------------------------------------------
 
@@ -154,7 +127,5 @@ test = {'100001066420386_541929349185941': ['Happiness is...\n20. Running throug
 
 print "Dictionary of Words and Likes:"
 print assign_likes_to_words(test)
-print "\nNormalized: "
-print normalize_likes(assign_likes_to_words(test))
 print "\nClassified Words: "
 print classify_words(test)
