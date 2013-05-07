@@ -136,7 +136,9 @@ def getPostDictMessageList( mydict ):
 #end of getPostDictMessageList
 
 
-
+'''
+#uncomment this part to test these functions
+    
 #test getPostDict()
 
 startTime= clock()  #start timer
@@ -155,4 +157,4 @@ print "---LIST OF MESSAGES---"
 #test getPostDictMessageList( mydict ):
 print getPostDictMessageList( myresult )
 
-
+'''
