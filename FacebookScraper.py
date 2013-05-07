@@ -40,7 +40,7 @@ def getPostDict( pageID = "me/home" ):
     #  and paste it into the access_token variable
 
     #this is the access_token required by facebook to gain temporary access to the graph API -- MUST BE UPDATED BEFORE EACH USE OF THE PROGRAM
-    access_token = "BAACEdEose0cBAMqrjb2GUmZAxMNGQ5MXHGKZAT4ijun3scc8JBXL9TB8qEFm3n6S90N1LUQVcR3kYI5D75olyDqJ8j9WDL30kTm6IO8y0o0jHTr1YRwrkxog6QUUdHJwwgjYdpIWA55HW2GZCKjJKuX6yU3Hl2QZAuPhmZAwoywjsViUmtN2VJ3zYZBPp53tQdZBl6NNmuVk6iNm9cOafgMTuZBbALcKxY71QKrbdaPGDQZDZD"
+    access_token = "BAACEdEose0cBAJdkBC0ze0odNuuZAN699uTQiGK74PsTcRHT6k9MkIYjnbdtYftNO0sXT9FKUSVvyZCFxEZB2LWhVmRd1GUyAcPayTgxuxKZC1JQh7ZAdZABgmrUMMEixK19DqiPF6yqxE6lKGLTsywGEnfwNfi3l8h9VpQnujK7u71i8IAYqpwaZCTzAYIZCpL5DCWqYdr7bvIJh9gJkwLpN7LT1J9sCd1KTk5gQpddnwZDZD"
 
     #the number of posts to get from given url
     numberOfNewPostsToGet = 1000
@@ -73,7 +73,17 @@ def getPostDict( pageID = "me/home" ):
     #this is the dictionary we will return with case format: { "postId" : [ "postText", #likes ] }
     PostAndLikesDict = {}
 
+    #keep track of ignored posts
     ignoredPosts = 0
+
+    #check to make sure the access key is getting us the data we need.
+    try:
+        mydata = s['data']
+    except:
+        print "*** YOU NEED TO GET A NEW ACCESS KEY FOR THE FACEBOOK API ***"
+        print "...see documentation..."
+        print "program exiting..."
+        exit(0)
 
     print "Adding " + str( len( s['data']) ) + " posts to dataset..."
 
@@ -105,6 +115,8 @@ def getPostDict( pageID = "me/home" ):
             ignoredPosts += 1
             print e
 
+    #print the number of posts ignored.  
+    print "Ignored " + str( ignoredPosts ) + " posts."
     #debug lines...
     #print str(ignoredPosts) + " posts were not liked."
     #print str( len( PostAndLikesDict ) ) + " posts added to dataset."
