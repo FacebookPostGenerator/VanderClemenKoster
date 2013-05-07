@@ -13,10 +13,14 @@ Created on May 3, 2013
 '''
 
 import nltk
-nltk.download()
+#nltk.download()   #run first time
 import string
 import re
 import FacebookScraper
+import SentenceGenerator
+
+
+
 
 #----------------------------------------------------------------------------------------------
 
@@ -119,8 +123,10 @@ def classify_sentence(status):
 #----------------------------------------------------------------------------------------------
 
 test = FacebookScraper.getPostDict()
-
+#buglines
 print "Dictionary of Words and Likes:"
 print assign_likes_to_words(test)
 print "\nClassified Words: "
 print classify_words(test)
+
+# end of file

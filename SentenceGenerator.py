@@ -16,6 +16,7 @@ Date: 5/7/2013
 
 import nltk
 import random
+import FacebookScraper
 import classify
 
 '''
@@ -77,28 +78,27 @@ def createSentence(grammarStructure, posWordDict, likesWordDict):
 
 
 #This is the main method for our program (it runs Matt's code as well)
-def run(stephenDict):
-    
-    likesWordDict = classify.assign_likes_to_words(stephenDict)
-
-    # theStatuses will be a list of statuses that stephen gives me
-    theStatuses = []
-    # This will go through every sentence and add it to theStatuses
-    for key, value in stephenDict.iteritems():
-        theStatuses.append(value[0])    
-    print theStatuses
-
-    print "The chosen structure is:"
-    theStructure = chooseStructure(theStatuses)
-    print theStructure
-    print "The classified words are:"
-    classyWords = classify.classify_words(stephenDict)
-    print classyWords
-    print "The dictionary of likes is:"
-    likesDictionary = classify.assign_likes_to_words(stephenDict)
-    print likesDictionary
+stephenDict = FacebookScraper.getPostDict()
 
 
-    randomlyGeneratedStatus = createSentence(theStructure, classyWords, likesDictionary)
+# theStatuses will be a list of statuses that stephen gives me
+theStatuses = []
+# This will go through every sentence and add it to theStatuses
+for key, value in stephenDict.iteritems():
+    theStatuses.append(value[0])    
+print theStatuses
 
-    print "done"
+print "The chosen structure is:"
+theStructure = chooseStructure(theStatuses)
+print theStructure
+print "The classified words are:"
+classyWords = classify.classify_words(stephenDict)
+print classyWords
+print "The dictionary of likes is:"
+likesDictionary = classify.assign_likes_to_words(stephenDict)
+print likesDictionary
+
+
+randomlyGeneratedStatus = createSentence(theStructure, classyWords, likesDictionary)
+
+print "done"
