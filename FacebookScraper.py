@@ -43,7 +43,7 @@ def getPostDict( pageID = "me/home" ):
     access_token = "BAACEdEose0cBAJdkBC0ze0odNuuZAN699uTQiGK74PsTcRHT6k9MkIYjnbdtYftNO0sXT9FKUSVvyZCFxEZB2LWhVmRd1GUyAcPayTgxuxKZC1JQh7ZAdZABgmrUMMEixK19DqiPF6yqxE6lKGLTsywGEnfwNfi3l8h9VpQnujK7u71i8IAYqpwaZCTzAYIZCpL5DCWqYdr7bvIJh9gJkwLpN7LT1J9sCd1KTk5gQpddnwZDZD"
 
     #the number of posts to get from given url
-    numberOfNewPostsToGet = 1000
+    numberOfNewPostsToGet = 10
     
     #url that returns the GraphAPI data for the page we are scanning
     urlToImport = "https://graph.facebook.com/" + pageID + "?limit=" + str(numberOfNewPostsToGet) + "&access_token=" + access_token
